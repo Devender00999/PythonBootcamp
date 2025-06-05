@@ -6,3 +6,8 @@ for i in li:
    if i > max:
       max = i
 print(max)
+
+total = 0
+for i in range(1, 101):
+   total += i
+print(total)
