@@ -37,26 +37,41 @@ nr_numbers = int(input('How many numbers would you like?\n'))
    
 # print("Your password is: " + password)
 
-li_chars = [letters, numbers, symbols]
-total = nr_letters + nr_symbols + nr_numbers
-password = ''
-for i in range(total):
-   random_charlist = random.randint(0, len(li_chars) - 1)
-   choice = random.choice(li_chars[random_charlist])
-   password += choice
+# li_chars = [letters, numbers, symbols]
+# total = nr_letters + nr_symbols + nr_numbers
+# password = ''
+# for i in range(total):
+#    random_charlist = random.randint(0, len(li_chars) - 1)
+#    choice = random.choice(li_chars[random_charlist])
+#    password += choice
    
-   if (random_charlist == 0):
-      nr_letters -= 1
-   if (random_charlist == 1):
-      nr_numbers -= 1
-   if (random_charlist == 2):
-      nr_symbols -= 1
+#    if (random_charlist == 0):
+#       nr_letters -= 1
+#    if (random_charlist == 1):
+#       nr_numbers -= 1
+#    if (random_charlist == 2):
+#       nr_symbols -= 1
       
-   if (nr_letters == 0 and letters in li_chars):
-      li_chars.pop(li_chars.index(letters))
-   if (nr_numbers == 0 and numbers in li_chars):
-      li_chars.pop(li_chars.index(numbers))
-   if (nr_symbols == 0 and symbols in li_chars):
-      li_chars.pop(li_chars.index(symbols))
+#    if (nr_letters == 0 and letters in li_chars):
+#       li_chars.pop(li_chars.index(letters))
+#    if (nr_numbers == 0 and numbers in li_chars):
+#       li_chars.pop(li_chars.index(numbers))
+#    if (nr_symbols == 0 and symbols in li_chars):
+#       li_chars.pop(li_chars.index(symbols))
+
+password = []
+for i in range(nr_letters):
+   password += random.choice(letters)
    
-print("Your password is: " + password)
+for i in range(nr_symbols):
+   password += random.choice(symbols)
+   
+for i in range(nr_numbers):
+   password += random.choice(numbers)
+
+random.shuffle(password)
+
+random_pass = ""
+for i in password:
+   random_pass += i
+print("Your password is: " + random_pass)
