@@ -14,21 +14,31 @@ first, second = random.choices(data, k = 2)
 
 # TODO 3: Run a loop until is_winning is True
 
+def is_user_wrong(choice, score):
+   """Check if user selected wrong choice"""
+   if choice == 'a' and first['follower_count'] < second['follower_count']:
+      print(f"Sorry, that's wrong. Final score: {score}")
+      return True
+   elif choice == 'b' and first['follower_count'] > second['follower_count']:
+      print(f"Sorry, that's wrong. Final score: {score}")
+      return True
+   return False
+
+def format_data(account):
+   return f"{account['name']}, {account['description']}, from {account['country']}"
+   
+
+   
 
 while is_winning:
-   print(f"Compare A: {first['name']}, {first['description']}, from {first['country']}")
+   print(f"Compare A: {format_data(first)}")
    print(vs)
-   print(f"Against B: {second['name']}, {second['description']}, from {second['country']}")
+   print(f"Against B: {format_data(second)}")
    choice = input("Who has more followers? Type 'A' or 'B': ").lower()
 
-   if choice == 'a':
-      if first['follower_count'] < second['follower_count']:
-         print(f"Sorry, that's wrong. Final score: {score}")
-         break
-   else:
-      if first['follower_count'] > second['follower_count']:
-         print(f"Sorry, that's wrong. Final score: {score}")
-         break
+   if is_user_wrong(choice, score):
+      break
+   
    score += 1
    print(f"You're right! Current Score: {score}")
    first = second
