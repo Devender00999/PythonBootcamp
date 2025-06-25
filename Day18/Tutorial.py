@@ -45,8 +45,8 @@ t.colormode(255)
 
 # Challenge 5
 timmy.speed(0)
-timmy.pensize(4)
-for i in range(0, 361, 10):
+timmy.pensize(2)
+for i in range(0, 361, 5):
    timmy.color(get_random_color())
    timmy.circle(100)
    timmy.setheading(i)
