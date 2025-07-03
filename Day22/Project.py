@@ -34,15 +34,13 @@ screen.onkey(rightPaddle.move_down, 'Down')
 
 game_is_on = True
 while game_is_on:
-   time.sleep(0.08)
-   print(ball.ycor(), ball.xcor())
+   time.sleep(ball.move_speed)
 
    # detect collision with wall
    if ball.ycor() >= 280 or ball.ycor() <= -280:
       ball.bounce_y()
       
    # detect collision with the paddle
-   print(ball.distance(rightPaddle))
    if ball.distance(rightPaddle) <= 50 and ball.xcor() > 320 or ball.distance(leftPaddle) <= 50 and ball.xcor() < -320:
       ball.bounce_x()
       
@@ -57,7 +55,6 @@ while game_is_on:
       ball.reset_position()
       ball.bounce_x()
       scoreboard.increase_r_point()
-
 
    ball.move()
    screen.update()
