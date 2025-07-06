@@ -11,6 +11,8 @@ screen.tracer(0)
 # turtle 
 turtle = Player()
 
+scoreboard = Scoreboard()
+
 screen.listen()
 
 screen.onkey(turtle.move_up, 'Up')
@@ -42,6 +44,7 @@ while game_is_on:
    if turtle.ycor() > FINISH_LINE_Y:
       turtle.goto_start()
       car_manager.speed_up()
+      scoreboard.update_score()
          
          
 screen.exitonclick()
