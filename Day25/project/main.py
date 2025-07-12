@@ -20,7 +20,7 @@ while (game_is_on):
    state = screen.textinput(f"{score}/50 Guess the state", "What's the name of the state in US").title()
    current_state = states[states['state'] == state]
    if len(current_state['state']) == 1:
-      x, y = current_state['x'].to_list()[0], current_state['y'].to_list()[0]
+      x, y = current_state.x.item(), current_state.y.item()
       turtle.goto(x, y)
       turtle.write(state.title(), font=('Times', 10, 'bold'))
       score += 1
