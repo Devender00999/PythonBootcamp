@@ -7,29 +7,36 @@ window = tkinter.Tk()
 window.title("First window")
 window.minsize(width=500, height=300)
 
+# padding
+window.config(padx=20, pady=20)
+
 # creating label in tkinter
 # adding label to window
 my_label = tkinter.Label(text='I am Label', font=("Times", 34,'bold'))
-my_label.pack()
+# my_label.pack(side='left')
+my_label.grid(row=0, column=0)
 
 
 # changing text in label
 my_label['text'] = "Hello World!"
 my_label.config(text="Hello World!")
 
-text = tkinter.StringVar()
-
 # input using Entry
-entry = tkinter.Entry(textvariable=text)
-entry.pack()
+entry = tkinter.Entry()
+# entry.pack(side="left")
+entry.grid(row=3,column=3)
 
 
 def replace_text():
-   my_label.config(text=text.get())
+   my_label.config(text=entry.get())
    
 # button
 button = tkinter.Button(text="Click Me!", command=replace_text)
-button.pack()
+button.grid(row=1, column=1)
+
+# button
+new_button = tkinter.Button(text="New Button!", command=replace_text)
+new_button.grid(row=0, column=2)
 
 
 
