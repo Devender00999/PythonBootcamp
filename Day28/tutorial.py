@@ -6,6 +6,9 @@ window = Tk()
 canvas = Canvas(width=200, height=224)
 
 
+# dynamic typing 
+
+
 
 
 
