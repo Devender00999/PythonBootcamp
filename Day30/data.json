@@ -1,0 +1,10 @@
+{
+    "Ebay": {
+        "email": "devender@gmail.com",
+        "password": "Pass@123"
+    },
+    "Amazon": {
+        "email": "devender@gmail.com",
+        "password": "Pass@123"
+    }
+}
