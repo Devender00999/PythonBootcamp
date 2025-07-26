@@ -13,7 +13,12 @@ window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 
 canvas = Canvas(width=800, height= 526, bg=BACKGROUND_COLOR, highlightthickness=0)
 
-translations = pandas.read_csv('data/french_words.csv').to_dict(orient='records')
+try: 
+   translations = pandas.read_csv('data/words_to_learn.csv').to_dict(orient='records')
+except FileNotFoundError: 
+   translations = pandas.read_csv('data/french_words.csv').to_dict(orient='records')
+except pandas.errors.EmptyDataError: 
+   translations = pandas.read_csv('data/french_words.csv').to_dict(orient='records')
 
 front_image = PhotoImage(file="./images/card_front.png")
 back_image = PhotoImage(file="./images/card_back.png")
@@ -27,28 +32,26 @@ canvas.grid(row=0, column=0, columnspan=2)
 current_word = ''
 
 def get_random_word():
-   global current_word
+   global current_word, timer_id
    current_word = random.choice(translations)
    canvas.itemconfig(image, image=front_image)
    canvas.itemconfig(title, text='French', fill="black")
    canvas.itemconfig(word_text, text=current_word['French'], fill="black")
-
-   window.after(3000, show_translation)
+   window.after_cancel(timer_id)
+   timer_id = window.after(3000, show_translation)
    
 def show_translation():
    canvas.itemconfig(title, text='English', fill='white')
    canvas.itemconfig(word_text, text=current_word['English'], fill="white")
    canvas.itemconfig(image, image=back_image)
-
    
 def has_learnt():
    get_random_word()
-   words_to_learn = translations.remove(current_word)
-   df = pandas.DataFrame(words_to_learn)
-   df.to_csv('words_to_learn.csv')
-   
-   
-   
+   translations.remove(current_word)
+   df = pandas.DataFrame(translations)
+   df.to_csv('data/words_to_learn.csv', index=False)
+
+timer_id = window.after(3000, show_translation)
 
 # wrong button
 wrong_image = PhotoImage(file="./images/wrong.png")
