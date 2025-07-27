@@ -118,7 +118,7 @@ username_label = Label(text='Email/Username: ')
 username_label.grid(row=2, column=0)
 
 username_input = Entry(width=38)
-username_input.insert(0, "devender00999@gmail.com")
+username_input.insert(0, "devender@gmail.com")
 username_input.grid(row=2, column=1, columnspan=2)
 
 # password
