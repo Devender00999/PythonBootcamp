@@ -1,9 +1,26 @@
+import requests 
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 
 ## STEP 1: Use https://www.alphavantage.co
 # When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
+params = {
+   "function": "TIME_SERIES_DAILY_ADJUSTED",
+   "symbol": "RELIANCE.BSE",
+   "outputsize": "full",
+   "apikey": 'demo'
+}
+res = requests.get('https://www.alphavantage.co/query', params=params)
+res.raise_for_status()
+result = res.json()
 
+yesterday_close = float(result['Time Series (Daily)']["2025-08-01"]['4. close'])
+day_before_yes_close = float(result['Time Series (Daily)']['2025-07-31']['4. close'])
+diff = round(((day_before_yes_close - yesterday_close) / day_before_yes_close) * 100,2)
+
+print(diff)
+if abs(diff) > 5:
+   print("Get news")
 ## STEP 2: Use https://newsapi.org
 # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME. 
 
