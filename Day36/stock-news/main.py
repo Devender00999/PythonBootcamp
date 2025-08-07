@@ -57,7 +57,7 @@ def send_mail(email, subject,  message):
 def get_news(company: str):
    new_params = {
       "q": company,
-      "from": "2025-07-06",
+      "from": "2025-07-07",
       "sortBy": "publishedAt",
       "apiKey": NEWS_API_KEY,
       "page": 1,
