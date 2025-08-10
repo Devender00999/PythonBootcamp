@@ -4,7 +4,7 @@ import os
 
 
 load_dotenv()
-TOKEN = os.getenv('PIXELA_TOKEN')
+TOKEN = os.getenv('GENERIC_AUTH_TOKEN')
 USERNAME = os.getenv('USERNAME')
 
 # creating a user
